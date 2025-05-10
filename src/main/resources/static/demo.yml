@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: User API
+  version: 1.0.0
+  description: API for managing users
+
+paths:
+  /users/search:
+    get:
+      summary: Search users by phone number and name
+      parameters:
+        - name: phoneNumber
+          in: query
+          required: true
+          schema:
+            type: string
+            pattern: "^\\+962[1-9][0-9]{8}$"
+          description: Phone number in Jordanian format starting with +962 followed by 9 digits
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+            maxLength: 60
+            pattern: '^[A-Za-z\\s]{1,60}$'
+          description: Name should be alphabetic only and max 60 characters
+      responses:
+        '200':
+          description: A list of matched users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
+  /users:
+    post:
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created
+        '400':
+          description: Invalid input
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - name
+        - phoneNumber
+      properties:
+        name:
+          type: string
+          maxLength: 60
+          pattern: '^[A-Za-z\\s]{1,60}$'
+          example: John Doe
+        phoneNumber:
+          type: string
+          pattern: '^\\+962[0-9]{9}$'
+          example: "+962790123456"
