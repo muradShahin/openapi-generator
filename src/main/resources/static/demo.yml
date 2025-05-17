@@ -1,4 +1,7 @@
 openapi: 3.0.3
+
+servers:
+  - url: https://localhost:8080
 info:
   title: User API
   version: 1.0.0
@@ -14,6 +17,7 @@ paths:
           required: true
           schema:
             type: string
+            maxLength: 10
             pattern: "^\\+962[1-9][0-9]{8}$"
           description: Phone number in Jordanian format starting with +962 followed by 9 digits
         - name: name
