@@ -33,4 +33,21 @@ public class ExceptionHandler {
         System.out.println("constrains violation exception");
         return ResponseEntity.badRequest().body(ex.getMessage());
     }
+        @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
+    public  ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException ex){
+        System.out.println("constrains violation exception");
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
+        @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
+    public  ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException ex){
+        System.out.println("constrains violation exception");
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
+
+        @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
+    public  ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException ex){
+        System.out.println("constrains violation exception");
+        return ResponseEntity.badRequest().body(ex.getMessage());
+    }
 }
