@@ -26,11 +26,7 @@ public class ExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(MissingServletRequestParameterException.class)
-    public ResponseEntity<?> handleMissingServletRequestParameter(MissingServletRequestParameterException ex) {
 
-        return ResponseEntity.badRequest().body(ex.getBody());
-    }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(ConstraintViolationException.class)
     public  ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException ex){
