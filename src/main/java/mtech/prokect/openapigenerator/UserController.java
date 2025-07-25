@@ -22,12 +22,12 @@ import java.util.Map;
 
 @RestController
 @Validated
-@RequestMapping("/v1/users")
+@RequestMapping("/v2/users")
 public class UserController {
 
     @PostMapping
     public ResponseEntity<?> addUser(@Valid @RequestBody User user) {
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+        return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
     }
 
 
@@ -36,7 +36,7 @@ public class UserController {
         return new ResponseEntity<>(name,HttpStatus.OK);
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test/vaild")
     public ResponseEntity<?> getUser2(
             @NotNull @Pattern(regexp = "^\\+962[1-9][0-9]{8}$") @Size(max = 10) @Parameter(name = "phoneNumber", description = "Phone number in Jordanian format starting with +962 followed by 9 digits", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "phoneNumber", required = true) String phoneNumber,
             @NotNull @Pattern(regexp = "^[A-Za-z\\\\s]{1,60}$") @Size(max = 60) @Parameter(name = "name", description = "Name should be alphabetic only and max 60 characters", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "name", required = true) String name

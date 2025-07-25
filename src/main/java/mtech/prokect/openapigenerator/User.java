@@ -17,8 +17,8 @@ public class User {
   @JsonProperty("phoneNumber")
   private String phoneNumber;
 
-  public User name(String name) {
-    this.name = name;
+  public User name(String name2) {
+    this.name = name2;
     return this;
   }
 
@@ -26,9 +26,9 @@ public class User {
    * Get name
    * @return name
   */
-  @Schema(example = "John Doe", required = true)
+  @Schema(example = "John Shahin", required = true)
   @NotNull
-  @Pattern(regexp = "^[A-Za-z\\s]{1,60}$")
+  @Pattern(regexp = "^[A-Za-z\\s]{1,50}$")
   @Size(max = 60)
   public String getName() {
     return name;
@@ -49,7 +49,7 @@ public class User {
   */
   @Schema(example = "+962790123456", required = true)
   @NotNull
-  @Pattern(regexp = "^\\+962[0-9]{9}$")
+  @Pattern(regexp = "^\\+962[0-9]{8}$")
   public String getPhoneNumber() {
     return phoneNumber;
   }
