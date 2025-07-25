@@ -12,14 +12,6 @@ paths:
     get:
       summary: Search users by phone number and name
       parameters:
-        - name: phoneNumber
-          in: query
-          required: true
-          schema:
-            type: string
-            maxLength: 10
-            pattern: "^\\+962[1-9][0-9]{8}$"
-          description: Phone number in Jordanian format starting with +962 followed by 9 digits
         - name: name
           in: query
           required: true
